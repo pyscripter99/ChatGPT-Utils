@@ -1,5 +1,3 @@
-// Define the submitConversation function
-// Wait for chatgpt to be ready, then submit question
 async function submitConversation(text) {
     await waitForReady();
     const textarea = document.querySelector("textarea[tabindex='0']");
@@ -73,10 +71,9 @@ function onResult(callback) {
             });
 
             const result = await getResult();
-            callback(result); // Call the provided callback with the result
+            callback(result);
             resolve(result);
 
-            // Process the next result
             processNextResult();
         };
 
@@ -98,20 +95,3 @@ function onReady(callback) {
 
     checkReadyState();
 }
-
-// // Periodically check if the button has been added to the page and add it if it hasn't
-// const targetSelector =
-//     ".flex.flex-col.w-full.py-2.flex-grow.md\\:py-3.md\\:pl-4";
-// const intervalId = setInterval(() => {
-//     const targetElement = document.querySelector(targetSelector);
-//     if (targetElement && !targetElement.contains(button)) {
-//         // Insert the button before the target element
-//         targetElement.parentNode.insertBefore(button, targetElement);
-
-//         // Insert the progress bar container before the target element
-//         targetElement.parentNode.insertBefore(progressContainer, targetElement);
-
-//         // Insert the chunk size label and input before the target element
-//         targetElement.parentNode.insertBefore(chunkSizeLabel, targetElement);
-//     }
-// }, 5000);

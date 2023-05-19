@@ -30,6 +30,10 @@ async function getResult() {
     var resp = children[children.length - 2].querySelector(
         "div > div:nth-child(2) > div > div"
     );
+    if (children.length === 3) {
+        return resp.parentElement.querySelector("div:nth-child(2) > div")
+            .textContent;
+    }
     return resp.textContent;
 }
 

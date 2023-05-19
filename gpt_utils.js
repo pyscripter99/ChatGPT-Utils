@@ -46,6 +46,59 @@ async function ask(prompt) {
     return res;
 }
 
+function onSubmit(callback) {
+    document.addEventListener("keyup", handleKeyPress);
+    var value = "";
+
+    function handleKeyPress(event) {
+        const textarea = event.target;
+        if (
+            textarea.tagName === "TEXTAREA" &&
+            textarea.matches("[tabindex='0']")
+        ) {
+            if (event.keyCode === 13 && textarea.value === "") {
+                callback(value);
+            } else {
+                value = textarea.value;
+            }
+        }
+    }
+}
+
+function onResult(callback) {
+    return new Promise((resolve) => {
+        const processNextResult = async () => {
+            const message = await new Promise((innerResolve) => {
+                onSubmit(innerResolve);
+            });
+
+            const result = await getResult();
+            callback(result); // Call the provided callback with the result
+            resolve(result);
+
+            // Process the next result
+            processNextResult();
+        };
+
+        processNextResult();
+    });
+}
+
+function onReady(callback) {
+    const checkReadyState = () => {
+        const isReady = !document.querySelector(
+            ".text-2xl > span:not(.invisible)"
+        );
+        if (isReady) {
+            callback();
+        } else {
+            setTimeout(checkReadyState, 500);
+        }
+    };
+
+    checkReadyState();
+}
+
 // // Periodically check if the button has been added to the page and add it if it hasn't
 // const targetSelector =
 //     ".flex.flex-col.w-full.py-2.flex-grow.md\\:py-3.md\\:pl-4";

@@ -33,7 +33,7 @@ await waitForReady()
 ```
 
 ### getResult()
-GetResult is a function that will get the last message and return it.
+GetResult is a function that will get the last message and return it. Calls waitForReady() before reading.
 
 On first prompt it will not return valid data!
 

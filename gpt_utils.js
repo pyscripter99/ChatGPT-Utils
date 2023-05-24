@@ -1,3 +1,13 @@
+// all methods to be injected go here
+const gpt = {
+    submitConversation,
+    waitForReady,
+    getResult,
+    onReady,
+    onResult,
+    onSubmit,
+};
+
 async function submitConversation(text) {
     await waitForReady();
     const textarea = document.querySelector("textarea[tabindex='0']");
@@ -94,4 +104,18 @@ function onReady(callback) {
     };
 
     checkReadyState();
+}
+
+function g(str) {
+    console.log(str);
+}
+
+function hi() {
+    g("Hello");
+}
+
+// private/local
+// Injects ChatGPT Utils
+function inject() {
+    window.gpt = gpt;
 }

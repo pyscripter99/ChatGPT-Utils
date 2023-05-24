@@ -57,15 +57,15 @@ Use:
 ```javascript
 onReady(() => {
     console.log("ChatGPT is ready!")
-})
+});
 
 // Or
 
 function handleReady() {
-    console.log("ChatGPT is ready!")
+    console.log("ChatGPT is ready!");
 }
 
-onReady(handleReady)
+onReady(handleReady);
 ```
 
 ### onSubmit(callback)

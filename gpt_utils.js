@@ -1,5 +1,6 @@
 // all methods to be injected go here
 const gpt = {
+    ask,
     submitConversation,
     waitForReady,
     getResult,

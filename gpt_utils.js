@@ -1,5 +1,5 @@
 // all methods to be injected go here
-const gpt = {
+var gpt = {
     ask,
     submitConversation,
     waitForReady,
@@ -8,6 +8,8 @@ const gpt = {
     onResult,
     onSubmit,
 };
+
+var gpt_inject = inject;
 
 async function submitConversation(text) {
     await waitForReady();

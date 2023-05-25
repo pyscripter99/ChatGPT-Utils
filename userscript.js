@@ -9,10 +9,27 @@
 // @match        https://chat.openai.com/chat
 // @icon         none
 // @grant        none
-// @require      https://raw.githubusercontent.com/pyscripter99/ChatGPT-Utils/master/gpt_utils.js
 // ==/UserScript==
 
 (function () {
     "use strict";
-    inject();
+
+    downloadAndEval(
+        "https://raw.githubusercontent.com/pyscripter99/ChatGPT-Utils/master/gpt_utils.js"
+    )
+        .then(() => {
+            // Inject ChatGPT utils
+            console.log(gpt_inject);
+        })
+        .catch((error) => {
+            console.error("Error downloading or executing the script:", error);
+        });
 })();
+
+function downloadAndEval(url) {
+    return fetch(url)
+        .then((response) => response.text())
+        .then((script) => {
+            eval(script);
+        });
+}

@@ -1,3 +1,4 @@
+![ChatGPT Utils](https://github.com/pyscripter99/ChatGPT-Utils/assets/78647110/6baeb5be-03e9-49ba-afa8-07416ad9d2f2)
 # ChatGPT Utils
 
 ChatGPT Utils is a library for writing your own plugins for ChatGPT. It provides helpers to kick-start your ChatGPT plugin. This is a standalone file so it can be used in user scripts or browser extensions.
